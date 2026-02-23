@@ -23,6 +23,9 @@ RUN git clone https://github.com/haddocking/haddock3.git /app/repo/haddock3 && \
     pip install --no-cache-dir -e .
 
 # Copy MCP server source
-COPY src/ src/
+COPY --chmod=755 src/ src/
+
+# Create writable directories for jobs/results
+RUN mkdir -p /app/jobs /app/results && chmod 777 /app /app/jobs /app/results
 
 CMD ["python", "src/server.py"]
