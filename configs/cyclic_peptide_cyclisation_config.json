@@ -1,0 +1,34 @@
+{
+  "_description": "Configuration for cyclic peptide cyclisation using HADDOCK3",
+  "_source": "Extracted from examples/use_case_2_cyclic_peptide_cyclisation.py",
+
+  "ncores": 4,
+  "timeout": 3600,
+  "tolerance": 5,
+  "sampling_factor": 10,
+  "tadfactor": 4,
+
+  "md_steps": {
+    "rigid": 2000,
+    "cool1": 2000,
+    "cool2": 4000,
+    "cool3": 4000,
+    "_description": "Molecular dynamics steps for each refinement phase"
+  },
+
+  "clustering": {
+    "n_clusters": 50,
+    "min_population": 1,
+    "top_clusters": 50,
+    "top_models": 1,
+    "_description": "Clustering parameters for conformational sampling"
+  },
+
+  "cyclisation": {
+    "distance": 3.5,
+    "disulphide_distance": 4.0,
+    "_description": "Distance parameters for cyclisation detection"
+  },
+
+  "water_steps": 5000
+}

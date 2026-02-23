@@ -1,0 +1,40 @@
+{
+  "_description": "Default configuration shared across all HADDOCK3 MCP scripts",
+  "_source": "Common settings extracted from all use cases",
+
+  "execution": {
+    "ncores": 4,
+    "mode": "local",
+    "timeout": 3600,
+    "debug": false,
+    "_description": "Basic execution parameters"
+  },
+
+  "environment": {
+    "conda_env_path": "./env",
+    "mamba_command": "mamba",
+    "_description": "Environment settings for HADDOCK3 execution"
+  },
+
+  "file_formats": {
+    "input": ["pdb"],
+    "output": ["pdb", "tbl", "cfg"],
+    "restraints": ["tbl"],
+    "_description": "Supported file formats"
+  },
+
+  "validation": {
+    "check_file_existence": true,
+    "validate_pdb_format": true,
+    "require_chain_ids": true,
+    "_description": "Input validation settings"
+  },
+
+  "paths": {
+    "work_dir": "./haddock_work",
+    "output_prefix": "haddock_",
+    "config_suffix": "_config.cfg",
+    "restraints_suffix": "_restraints.tbl",
+    "_description": "Default path patterns"
+  }
+}

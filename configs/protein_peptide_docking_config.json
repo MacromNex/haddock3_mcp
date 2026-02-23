@@ -1,0 +1,31 @@
+{
+  "_description": "Configuration for protein-peptide docking using HADDOCK3",
+  "_source": "Extracted from examples/use_case_1_protein_peptide_docking.py",
+
+  "ncores": 4,
+  "timeout": 3600,
+  "tolerance": 20,
+  "sampling": 200,
+  "select_top": 20,
+
+  "flexible": {
+    "start": 1,
+    "end": 50,
+    "segment": "B",
+    "_description": "Peptide flexibility parameters (chain B)"
+  },
+
+  "md_steps": {
+    "rigid": 5000,
+    "cool1": 5000,
+    "cool2": 10000,
+    "cool3": 10000,
+    "_description": "Molecular dynamics steps for each phase"
+  },
+
+  "clustering": {
+    "min_population": 4,
+    "top_models": 4,
+    "_description": "Clustering parameters for final selection"
+  }
+}

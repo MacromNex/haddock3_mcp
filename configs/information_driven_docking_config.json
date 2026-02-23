@@ -1,0 +1,61 @@
+{
+  "_description": "Configuration for information-driven docking using experimental restraints",
+  "_source": "Extracted from examples/use_case_3_information_driven_docking.py",
+
+  "ncores": 4,
+  "timeout": 14400,
+  "tolerance": 20,
+  "scoring_mode": "full",
+
+  "sampling": {
+    "fast": {
+      "rigidbody": 100,
+      "flexref": 200,
+      "_description": "Fast sampling for quick testing"
+    },
+    "full": {
+      "rigidbody": 1000,
+      "flexref": 400,
+      "_description": "Full sampling for production runs"
+    }
+  },
+
+  "selection": {
+    "top_after_rigidbody": 400,
+    "top_after_flexref": 200,
+    "_description": "Number of models to select after each stage"
+  },
+
+  "flexible": {
+    "peptide": {
+      "start": 1,
+      "end": 50,
+      "segment": "B",
+      "_description": "Peptide flexibility (chain B)"
+    },
+    "protein": {
+      "start": 1,
+      "end": 200,
+      "segment": "A",
+      "_description": "Protein interface flexibility (chain A)"
+    }
+  },
+
+  "md_steps": {
+    "rigid": 5000,
+    "cool1": 5000,
+    "cool2": 10000,
+    "cool3": 10000,
+    "water": 10000,
+    "_description": "MD steps for each refinement phase"
+  },
+
+  "clustering": {
+    "min_population": 4,
+    "clustcutoff": 0.60,
+    "top_models": 10,
+    "_description": "Clustering parameters for final structure selection"
+  },
+
+  "temperature": 300
+}
