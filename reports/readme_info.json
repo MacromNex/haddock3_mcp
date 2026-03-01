@@ -1,0 +1,223 @@
+{
+  "project_name": "haddock3-tools",
+  "description": "MCP tools for HADDOCK3 molecular docking and cyclic peptide computational analysis",
+  "tools": [
+    {
+      "name": "submit_protein_peptide_docking",
+      "type": "submit",
+      "runtime": "1-4 hours",
+      "description": "Basic protein-peptide docking using HADDOCK3's molecular docking protocol",
+      "example_prompt": "Submit protein-peptide docking job using @examples/data/structures/1NX1_protein.pdb and @examples/data/structures/DAIDALSSDFT_3conformations.pdb"
+    },
+    {
+      "name": "submit_cyclic_peptide_cyclisation",
+      "type": "submit",
+      "runtime": "30-90 minutes",
+      "description": "Cyclise linear peptides into cyclic forms using HADDOCK3's cyclisation protocol",
+      "example_prompt": "Cyclise this linear peptide into cyclic form: @examples/data/structures/1sfi_peptide-ensemble.pdb"
+    },
+    {
+      "name": "submit_information_driven_docking",
+      "type": "submit",
+      "runtime": "1-6 hours",
+      "description": "Perform information-driven docking using experimental restraints and active/passive residues",
+      "example_prompt": "Perform information-driven docking with experimental data: protein @examples/data/structures/1NX1_protein.pdb, peptide @examples/data/structures/DAIDALSSDFT_3conformations.pdb, active protein residues: 36,109,113"
+    },
+    {
+      "name": "submit_batch_protein_peptide_docking",
+      "type": "submit",
+      "runtime": "per job",
+      "description": "Submit multiple peptides for docking against the same protein in parallel",
+      "example_prompt": "Submit batch docking jobs for peptides @examples/data/structures/DAIDALSSDFT_alpha.pdb, @examples/data/structures/DAIDALSSDFT_ext.pdb against @examples/data/structures/1NX1_protein.pdb"
+    },
+    {
+      "name": "get_job_status",
+      "type": "sync",
+      "description": "Check job progress and runtime",
+      "example_prompt": "Check the status of job abc12345"
+    },
+    {
+      "name": "get_job_result",
+      "type": "sync",
+      "description": "Get results when completed",
+      "example_prompt": "Get results for completed job abc12345"
+    },
+    {
+      "name": "get_job_log",
+      "type": "sync",
+      "description": "View execution logs with tail option",
+      "example_prompt": "Show me the logs for job abc12345"
+    },
+    {
+      "name": "cancel_job",
+      "type": "sync",
+      "description": "Cancel running job",
+      "example_prompt": "Cancel job abc12345"
+    },
+    {
+      "name": "list_jobs",
+      "type": "sync",
+      "description": "List all jobs (filterable by status)",
+      "example_prompt": "List all running jobs"
+    },
+    {
+      "name": "validate_haddock_environment",
+      "type": "sync",
+      "description": "Check HADDOCK3 installation and environment configuration",
+      "example_prompt": "Validate HADDOCK3 environment"
+    },
+    {
+      "name": "get_example_data_paths",
+      "type": "sync",
+      "description": "Get paths to available example data files for testing",
+      "example_prompt": "What example data files are available?"
+    },
+    {
+      "name": "get_server_info",
+      "type": "sync",
+      "description": "Get comprehensive server information including tool capabilities",
+      "example_prompt": "What tools and capabilities are available?"
+    }
+  ],
+  "scripts": [
+    {
+      "name": "protein_peptide_docking.py",
+      "description": "Basic protein-peptide docking protocol",
+      "runtime": "1-4 hours",
+      "example_command": "python scripts/protein_peptide_docking.py --protein examples/data/structures/1NX1_protein.pdb --peptide examples/data/structures/DAIDALSSDFT_3conformations.pdb"
+    },
+    {
+      "name": "cyclic_peptide_cyclisation.py",
+      "description": "Convert linear peptides to cyclic forms with specialized distance restraints",
+      "runtime": "30-90 minutes",
+      "example_command": "python scripts/cyclic_peptide_cyclisation.py --peptide examples/data/structures/1sfi_peptide-ensemble.pdb --length 14"
+    },
+    {
+      "name": "information_driven_docking.py",
+      "description": "Experimental data-guided docking using NMR, mutagenesis, and other experimental techniques",
+      "runtime": "1-6 hours",
+      "example_command": "python scripts/information_driven_docking.py --protein examples/data/structures/1NX1_protein.pdb --peptide examples/data/structures/DAIDALSSDFT_3conformations.pdb --active-protein '36,109,113' --active-peptide '1,5,8'"
+    }
+  ],
+  "demo_data": [
+    {
+      "file": "1NX1_protein.pdb",
+      "size": "131 KB",
+      "description": "HIV-1 protease protein structure",
+      "used_by": ["protein_peptide_docking", "information_driven_docking"]
+    },
+    {
+      "file": "DAIDALSSDFT_3conformations.pdb",
+      "size": "23 KB",
+      "description": "Peptide ensemble (3 conformations)",
+      "used_by": ["protein_peptide_docking", "information_driven_docking"]
+    },
+    {
+      "file": "1sfi_peptide-ensemble.pdb",
+      "size": "34 KB",
+      "description": "Linear peptide for cyclisation (14 residues)",
+      "used_by": ["cyclic_peptide_cyclisation"]
+    },
+    {
+      "file": "DAIDALSSDFT_alpha.pdb",
+      "size": "7 KB",
+      "description": "Alpha-helical peptide conformation",
+      "used_by": ["batch_docking", "virtual_screening"]
+    },
+    {
+      "file": "DAIDALSSDFT_ext.pdb",
+      "size": "7 KB",
+      "description": "Extended peptide conformation",
+      "used_by": ["batch_docking", "virtual_screening"]
+    },
+    {
+      "file": "DAIDALSSDFT_polyII.pdb",
+      "size": "7 KB",
+      "description": "Polyproline II peptide conformation",
+      "used_by": ["batch_docking", "virtual_screening"]
+    },
+    {
+      "file": "1nx1_refe.pdb",
+      "size": "113 KB",
+      "description": "Reference complex for validation",
+      "used_by": ["all_workflows"]
+    },
+    {
+      "file": "ambig.tbl",
+      "size": "10 KB",
+      "description": "Ambiguous interaction restraints for 1NX1-peptide",
+      "used_by": ["protein_peptide_docking", "information_driven_docking"]
+    }
+  ],
+  "configs": [
+    {
+      "file": "protein_peptide_docking_config.json",
+      "description": "Configuration for basic protein-peptide docking",
+      "parameters": {
+        "ncores": 4,
+        "sampling": "standard",
+        "clustering": true
+      }
+    },
+    {
+      "file": "cyclic_peptide_cyclisation_config.json",
+      "description": "Configuration for peptide cyclisation protocol",
+      "parameters": {
+        "restraints": "distance_based",
+        "clustering": "rmsd",
+        "cyclisation_strategy": "automatic"
+      }
+    },
+    {
+      "file": "information_driven_docking_config.json",
+      "description": "Configuration for experimental data-guided docking",
+      "parameters": {
+        "restraint_types": ["active", "passive"],
+        "validation_mode": "experimental",
+        "scoring_weights": "balanced"
+      }
+    },
+    {
+      "file": "default_config.json",
+      "description": "Common settings and defaults",
+      "parameters": {
+        "timeout": 21600,
+        "memory": "8GB",
+        "temp_dir": "/tmp"
+      }
+    }
+  ],
+  "installation": {
+    "prerequisites": [
+      "Conda or Mamba (mamba recommended)",
+      "Python 3.10+",
+      "GCC/G++ compiler for HADDOCK3 extensions",
+      "8+ GB RAM",
+      "10+ GB disk space per job"
+    ],
+    "environment_commands": [
+      "mamba create -p ./env python=3.12 pip -y",
+      "mamba run -p ./env pip install numpy scipy pandas biopython pdb-tools",
+      "mamba run -p ./env pip install loguru click tqdm fastmcp",
+      "cd repo/haddock3 && mamba run -p ../../env pip install -e . && cd ../.."
+    ],
+    "mcp_installation": [
+      "fastmcp install src/server.py --name haddock3-tools",
+      "claude mcp add haddock3-tools -- $(pwd)/env/bin/python $(pwd)/src/server.py"
+    ]
+  },
+  "features": [
+    "Protein-Peptide Docking with HADDOCK3's multi-stage protocol",
+    "Cyclic Peptide Cyclisation with specialized distance restraints",
+    "Information-Driven Docking integrating experimental data",
+    "Batch Processing for high-throughput virtual screening",
+    "Job Management with asynchronous processing",
+    "Experimental Data Integration supporting NMR, mutagenesis, cross-linking"
+  ],
+  "use_cases": [
+    "Basic protein-peptide docking for HIV-1 protease",
+    "Linear to cyclic peptide conversion",
+    "NMR-guided docking with experimental restraints",
+    "Virtual screening of peptide conformations"
+  ]
+}

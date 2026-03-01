@@ -1,0 +1,67 @@
+{
+  "test_date": "2025-12-31T14:03:47.791530",
+  "server_name": "haddock3-tools",
+  "server_path": "/home/xux/Desktop/CycPepMCP/CycPepMCP/tool-mcps/haddock3_mcp/src/server.py",
+  "tests": {
+    "server_startup": {
+      "status": "passed",
+      "tool_count": 12,
+      "expected_tools": 12,
+      "message": "Found 12 tools"
+    },
+    "job_manager": {
+      "status": "passed",
+      "total_jobs": 0,
+      "message": "Job manager operational"
+    },
+    "example_data": {
+      "status": "passed",
+      "examples_dir": "examples/data/structures",
+      "pdb_files_count": 12,
+      "sample_files": [
+        "1sfi_peptide-ensemble.pdb",
+        "test_peptide.pdb",
+        "1NX1_protein.pdb"
+      ]
+    },
+    "haddock_environment": {
+      "status": "passed",
+      "haddock3_available": false,
+      "message": "HADDOCK3 environment validation tool available"
+    },
+    "file_validation": {
+      "status": "passed",
+      "protein_files": 2,
+      "peptide_files": 5,
+      "sample_protein": "1NX1_protein.pdb",
+      "sample_peptide": "1sfi_peptide-ensemble.pdb"
+    },
+    "job_directory": {
+      "status": "passed",
+      "jobs_dir": "jobs",
+      "writable": true,
+      "message": "Job directory ready for submissions"
+    },
+    "tool_imports": {
+      "status": "passed",
+      "total_imports": 6,
+      "failed_imports": [],
+      "message": "All required modules available"
+    },
+    "claude_integration": {
+      "status": "passed",
+      "registered": true,
+      "claude_output": "Checking MCP server health...\n\nhaddock3-tools: /home/xux/miniforge3/envs/cycpepmcp/bin/python /home/xux/Desktop/CycPepMCP/CycPepMCP/tool-mcps/haddock3_mcp/src/server.py - \u2713 Connected",
+      "message": "MCP server registered with Claude"
+    }
+  },
+  "issues": [],
+  "summary": {
+    "total_tests": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "pass_rate": "100.0%",
+    "overall_status": "PASS"
+  }
+}
