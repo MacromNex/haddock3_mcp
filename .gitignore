@@ -36,3 +36,7 @@ test_batch_data/
 # OS files
 .DS_Store
 
+
+cyclisation_work/
+haddock_work/
+info_docking_work/
